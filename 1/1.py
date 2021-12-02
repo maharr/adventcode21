@@ -1,5 +1,3 @@
-import os
-print(os.getcwd())
 with open("1/input.txt", "r") as f:
     input = [int(x) for x in f.read().splitlines()]
 
