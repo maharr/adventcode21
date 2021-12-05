@@ -11,7 +11,6 @@ for i in input:
             count[j] -= 1
 
 output = ""
-print(count)
 
 for c in count:
     if c > 0:
@@ -39,7 +38,6 @@ for j in range(len(input[0])):
     else:
         filter += "1"
 
-
     newlist = [i for x,i in enumerate(oldlist) if i.startswith(filter)]
     if len(newlist) != 1:
         oldlist = newlist
@@ -47,12 +45,8 @@ for j in range(len(input[0])):
         filter = newlist[0]
         break
 
-    
-
-
 oxygenrate = int(filter,2)  
 print("Oxygen rate", oxygenrate)
-
 
 filter =""
 oldlist = input
@@ -76,7 +70,6 @@ for j in range(len(input[0])):
     else:
         filter = newlist[0]
         break
-
 
 co2rate = int(filter,2)
 print("CO2 rate", co2rate)
