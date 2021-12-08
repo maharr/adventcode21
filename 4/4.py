@@ -19,13 +19,13 @@ class bingoBoard:
         return False
 
 def findWinner(calls,boards):
-    winner = 0
-    last = 0
+    winner = -1
+    last = -1
     for call in calls:
         for board in boards:
             if board.check(call):
                 print(board.winner)
-                if winner == 0:
+                if winner == -1 :
                     winner = board.winner
                 else:
                     last = board.winner
