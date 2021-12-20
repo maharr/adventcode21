@@ -9,7 +9,7 @@ def flash(x,y):
                     
                     
 
-with open("input.txt", "r") as f:
+with open("11/input.txt", "r") as f:
     input = [list(x) for x in f.read().splitlines()]
 
 numbers = np.array(input,dtype=int)
