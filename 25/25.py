@@ -1,10 +1,10 @@
-with open("25/test.txt", "r") as f:
+with open("25/input.txt", "r") as f:
     lines = [ list(x) for x in f.read().splitlines()]
 
-for row in lines:
-    print(*row, sep="\t")
+#for row in lines:
+#    print(*row, sep="\t")
 
-print(len(lines[0]))
+#print(len(lines[0]))
 
 counter = 0
 
@@ -47,16 +47,21 @@ while True:
                 new_grid[i][j] = ">"
 
     if lines == new_grid:
-        change = True
+        if change:
+            change = True
+        else:
+            change = False
 
     lines = new_grid.copy()
 
-    for row in new_grid:
-        print(*row, sep="\t")
 
-    if not change:
-        False
-    
-    input("Press enter for next iteration " + str(counter))
+    #for row in new_grid:
+        #print(*row, sep="\t")
+
+    if change:
+        break
     
 
+    #input("Press enter for next iteration " + str(counter))
+
+print(counter)
