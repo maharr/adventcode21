@@ -1,6 +1,5 @@
 from re import sub
 
-
 with open("16/test.txt", "r") as f:
     lines = f.read().splitlines()
 
