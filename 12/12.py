@@ -1,7 +1,6 @@
 from tracemalloc import start
 
-
-with open("12/test.txt", "r") as f:
+with open("12/input.txt", "r") as f:
     maps = [[y for y in x.split("-")] for x in f.read().splitlines()]
 
 def find_routes(location):
@@ -13,29 +12,54 @@ def find_routes(location):
             result.append(line[0])
     return result
 
-
-
 finished = False
-location = start
 paths = [['start']]
 completed = 0
 
 while not finished:
-    newpaths = []
-
-    for path in paths:
-        print(path[-1])
-        steps = find_routes(path[-1])
-        for step in steps:
-            if step not in path or step.isupper() :
-                
-                newpath = path.copy()
+    if not paths:
+        break 
+    current_path = paths.pop()
+    steps = find_routes(current_path[-1])
+    for step in steps:
+        if step not in current_path or step.isupper() :
+            if step != 'end':
+                newpath = current_path.copy()
                 newpath.append(step)
-                newpaths.append(newpath.copy())
-    
-    print(newpath)
-                
+                paths.append(newpath.copy())
+            else:
+                completed += 1
 
-    break
+print(completed, " total routes")
+
+finished = False
+paths = [['start']]
+completed2 = 0
+
+def check_visit(next, path):
+    if step.isupper():
+        return True
+    lower_path = [x for x in path if x.islower()]
+    if len(lower_path) <= len(set(lower_path)) + 1 and step != "start":
+        return True
+    return False
+
+while not finished:
+    if not paths:
+        break 
+    current_path = paths.pop()
+    steps = find_routes(current_path[-1])
+    for step in steps:
+        if check_visit(step, current_path) :
+            if step != 'end':
+                newpath = current_path.copy()
+                newpath.append(step)
+                paths.append(newpath.copy())
+            else:
+                completed2 += 1
+    
+
+print(completed2, " total routes")
+
 
 
