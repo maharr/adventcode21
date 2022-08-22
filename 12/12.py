@@ -1,4 +1,4 @@
-from tracemalloc import start
+import time
 
 with open("12/input.txt", "r") as f:
     maps = [[y for y in x.split("-")] for x in f.read().splitlines()]
@@ -12,6 +12,7 @@ def find_routes(location):
             result.append(line[0])
     return result
 
+start = time.perf_counter()
 finished = False
 paths = [['start']]
 completed = 0
@@ -31,6 +32,8 @@ while not finished:
                 completed += 1
 
 print(completed, " total routes")
+print(f"Processing time for part 1, {time.perf_counter() - start:0.4f} seconds")
+
 
 finished = False
 paths = [['start']]
@@ -60,6 +63,6 @@ while not finished:
     
 
 print(completed2, " total routes")
-
+print(f"Processing time for part 2, {time.perf_counter() - start:0.4f} seconds")
 
 
